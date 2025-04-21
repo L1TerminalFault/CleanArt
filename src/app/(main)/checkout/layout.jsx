@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import Loading from '@/components/loading'
 
 
-export default const metadata = {
+export const metadata = {
   title: {
     default: "Checkout"
   }
