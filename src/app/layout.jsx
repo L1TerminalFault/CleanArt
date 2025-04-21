@@ -73,7 +73,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  let admin
+  let admin;
   const user = await getUserData();
   if (user) {
     const userExists = await User.findOne({ clerkId: user.clerkId });
@@ -84,6 +84,9 @@ export default async function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en" className="bg-[#141626]">
+        <head>
+          <link rel="icon" href="/favicon.png" type="image/png" />
+        </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased h-full bg-[#141626]`}
         >
@@ -117,14 +120,19 @@ export default async function RootLayout({ children }) {
 
                     <SignedIn>
                       {admin ? (
-                        <Link href={'/orders'}>
+                        <Link href={"/orders"}>
                           <div className="rounded-full bg-black items-center flex-row text-center gap-2 flex itemscenter justify-center hover:bg-gray-600 transition-all mr-2 active:bg-gray-600 p-1 px-3">
                             <FaList size={12} color="white" />
                             <div className="text-white text-">Orders</div>
                           </div>
                         </Link>
                       ) : null}
-                      <UserButton showName appearance={{ elements: { userButtonBox: { color: '#ddd' } } }} />
+                      <UserButton
+                        showName
+                        appearance={{
+                          elements: { userButtonBox: { color: "#ddd" } },
+                        }}
+                      />
                     </SignedIn>
                   </div>
                 </div>
