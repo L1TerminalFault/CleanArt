@@ -14,7 +14,7 @@ const categories = [
 
 
 const Pallete = ({ image, title, price, delivery }) => (
-  <div className="relative p-2 md:w-96 w-56 bg-gradient-t from-black to-[#000] border-0 border-gray-600 transition-all hover:border-gray-600 rounded-3xl">
+  <div className="relative p-2 bg-gradient-t from-black to-[#000] border-0 border-gray-600 transition-all hover:border-gray-600 rounded-3xl">
     <div className="rounded-3xl overflow-hidden">
       <Image src={images['img_' + image]} alt="" className="rounded-3xl md:size-80 size-40" />
     </div>
