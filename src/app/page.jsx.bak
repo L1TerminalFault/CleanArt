@@ -1,0 +1,35 @@
+"use client"
+// import {
+//   SignInButton,
+//   SignUpButton,
+//   SignedIn,
+//   SignedOut,
+//   UserButton,
+// } from '@clerk/nextjs'
+import Image from "next/image";
+import Link from 'next/link'
+import { usePathname } from "next/navigation";
+// import { Button } from "@/components/ui/button"
+
+export default function Home() {
+  const pathname = usePathname()
+  return (
+    <div className="flex flex-col gap-4 p-8">
+      <Link href={'/sign-in'}>
+        <div className="text-5xl font-medium flex p-4">Sign In</div>
+      </Link>
+      {/* <SignedOut>
+        <SignInButton />
+        <SignUpButton />
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+      <button className='btn btn-secondary'>Primary Button</button>
+      <Button>Hell ya</Button> */}
+      <Link href={'/sign-up'}>
+        <div className="text-5xl font-medium flex p-4">Sign Up</div>
+      </Link>
+    </div>
+  );
+}
