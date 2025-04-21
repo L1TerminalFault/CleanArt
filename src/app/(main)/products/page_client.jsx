@@ -15,8 +15,8 @@ const categories = [
 
 const Pallete = ({ image, title, price, delivery }) => (
   <div className="relative p-2 md:w-96 w-56 bg-gradient-t from-black to-[#000] border-0 border-gray-600 transition-all hover:border-gray-600 rounded-3xl">
-    <div className="rounded-3xl overflow-hidden">
-      <Image src={images['img_' + image]} alt="" className="md:size-80 size-40" />
+    <div className="rounded-3xl overflow-hidden bg-gray-700">
+      <Image src={images['img_' + image]} alt="" className="rounded-3xl md:size-80 size-40" />
     </div>
     <div className="mt-3 p-2 md:gap-1 bottom-3 left-0 absolute mx-3 flex flex-col rounded-xl bg-gradient-to-t from-gray-800 via-gray-700 to-[#1f293766]">
       <div className=" text-white text-sm md:text-lg">{title}</div>
@@ -30,7 +30,7 @@ const Pallete = ({ image, title, price, delivery }) => (
 
 const Category = ({ category, children }) => (
   <div className="flex flex-col">
-    <div className="text-lg mb-3 mt-4 text-white font-semibold pl-12">{category[0].toUpperCase() + category.slice(0)}</div>
+    <div className="text-lg mb-3 mt-4 text-white font-semibold pl-12">{category[0].toUpperCase() + category.slice(1)}</div>
     <div className="flex-wrap  flex gap-2">
       {children}
     </div>
