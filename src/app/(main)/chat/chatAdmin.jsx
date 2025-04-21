@@ -29,7 +29,7 @@ export default function ({ currentUserImage, users, chats, currentUserId }) {
   return (
     <div className="h-[calc(100vh-120px)] md:h-[calc(100vh-170px)] pb-12 md:pb-0">
       <div className="border-b-2 border-gray-600 p-3 md:p-4 flex flex-row gap-4">
-        {
+        {users.length ?
           users.map(eachUser => (
             <div key={eachUser._id} onClick={() => setSelectedUser(eachUser)} className={`${selectedUser._id === eachUser._id ? 'bg-slate-600' : ''} p-2 rounded-2xl hover:bg-slate-600`} >
               <div className={`overflow-hidden rounded-full flex flex-col border-2 border-gray-500 size-12 md:size-16`}>
@@ -45,11 +45,11 @@ export default function ({ currentUserImage, users, chats, currentUserId }) {
             </div>
 
           ))
-        }
+         : <div className='text-lg text-gray-300 w-full flex items-center justify-center h-[calc(100vh-150px)]'>No Users</div>}
       </div>
 
 
-      {/* chats view */}
+      {selectedUser ?
       <ChatComponent
         selectedUserId={selectedUser._id}
         currentUserId={currentUserId}
@@ -58,7 +58,7 @@ export default function ({ currentUserImage, users, chats, currentUserId }) {
         chatsFiltered={chatsFiltered}
         admin
       />
-
+      : null }
     </div>
   )
 }
