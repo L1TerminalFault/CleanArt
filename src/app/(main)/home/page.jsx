@@ -25,7 +25,7 @@ const Pallete = ({ image, title, id }) => (
     </div>
     <div className="mt-3 p-2 bottom-3 left-0 absolute mx-3 flex items-center flex-col rounded-3xl bg-gradient-to-t from-gray-800 to-[#0000">
       <div className="font-semibold text-white md:text-lg">{title}</div>
-      <Link href={`/products/${id}`}>
+      <Link href={`/products`}>
         <div className="bg-[#e2b40e] transition-all hover:bg-yellow-400 px-5 py-1 rounded-full">View Details</div>
       </Link>
     </div>
