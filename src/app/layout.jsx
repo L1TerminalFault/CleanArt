@@ -84,9 +84,6 @@ export default async function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en" className="bg-[#141626]">
-        <head>
-          <link rel="icon" href="/favicon.png" type="image/png" />
-        </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased h-full bg-[#141626]`}
         >
