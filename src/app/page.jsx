@@ -36,7 +36,7 @@ export default function Home() {
 
 
           <div className=" max-w-[1400px] w-full items-stretch">
-            <div className="rounded-3xl bg-gradient-to-l from-[#fff7] via-[#fff0] to-[#fff0] items-center justify-center p-2 md:p-20 gap-1 flex flex-row self-stretch border- border-gray-600 backdrop-blur-xl py-10 md:py-32 mt-16">
+            <div className="rounded-3xl bg-gradient-to-l from-[#fff7] via-[#fff0] to-[#fff0] items-center justify-center p-2 md:p-20 gap-1 flex flex-row self-stretch border-gray-600 backdrop-blur-xl py-10 md:py-32 mt-16">
               <div className="pr-4 md:gap-8 gap-3 text-center flex items-center justify-center flex-col">
                 <div className="text-xl md:text-5xl h2-animation font-bold max-w-40 md:max-w-[700px]">Discover and Collect Artworks to Elevate Your Space</div>
                 <p className="text-[10px] md:text-sm text-gray-400 max-w-40 md:max-w-80">Explore curated collection of original art designed to spark inspiration to any space.</p>
@@ -58,7 +58,7 @@ export default function Home() {
                   src={img_hero}
                   color="green"
                   alt="Laptops on Sale"
-                  className="md:width-96 width-52  bg-white"
+                  className="md:width-96 width-52"
                 />
 
               </div>
