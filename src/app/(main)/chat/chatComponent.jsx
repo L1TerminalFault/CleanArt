@@ -11,6 +11,7 @@ export default function ({ adminId, admin, selectedUserId, currentUserId, curren
   const messagesEndRef = useRef(null)
 
   const [scrollDelay, setScrollDelay] = useState(true)
+  const [reloading, setReloading] = useState(false)
 
   useEffect(() => {
     if (scrollDelay) {
@@ -34,13 +35,24 @@ export default function ({ adminId, admin, selectedUserId, currentUserId, curren
       })
     })
 
+    await refresh()
+    if (reloading) setReloading(false)
+  }
+
+  const refresh = async () => {
+    setReloading(true)
     const chat = await (await fetch('/api/fetchChats')).json()
     setChatsFiltered(chat)
-
+    setReloading(false)
   }
 
   return (
     <div className={`flex md:p-3 flex-col ${admin ? 'md:h-[calc(100%-120px)] h-[calc(100%-120px)]' : 'md:h-[calc(100%-0px)] h-[calc(100%-40px)]'} overflow-scroll justify-end`}>
+      <div onClick={refresh} className={`border border-gray-600 absolute top-32 right-2 rounded-2xl p-3 bg-gray-700`}>
+            <div className={`${reloading ? 'animate-spin' : null} rounded-full p-1 bg-gradient-to-tr from-black via-gray-800 to-gray-100`}>
+              <div className='rounded-full p-2 bg-gray-700'></div>
+            </div>
+          </div>
       {chatsFiltered.length ?
         <div className="text-sm md:text-lg text-white flex px-3 flex-col gap-1 overflow-scroll">
           <div className="py-3 h-full"></div>
@@ -60,7 +72,7 @@ export default function ({ adminId, admin, selectedUserId, currentUserId, curren
 
 
       <div className="flex py-1 md:py-2 px-3 md:px-6">
-        <form action={handleSend} className='w-full'>
+        <form action={(formData) => {setReloading(true);handleSend(formData)}} className='w-full'>
           <input
             type="text"
             name='message'
