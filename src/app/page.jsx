@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
-
+import Link from 'next/link'
 
 // import icons from hugeicons.com
 // import icons from hugeicons
@@ -179,7 +179,7 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="text-xs md:text-xl text-gray-500 mt-6 text-center">&copy; 2025 All Rights Reserved</div>
+            <div className="text-xs md:text-xl text-gray-500 mt-2 text-center">&copy; 2025 All Rights Reserved</div>
           </div>
 
         </div>
