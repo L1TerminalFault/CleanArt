@@ -108,12 +108,12 @@ export default async function RootLayout({ children }) {
 
                   <div className="clerk-buttons flex flex-row gap-1">
                     <SignedOut>
-                      <SignIn mode="modal">
+                      <SignInButton mode="modal">
                         <div className="items-center bg-[#000000] border- transition-all border-gray-700 hover:bg-[#272529] flex flex-row gap-2 text-white px-3 py-1 rounded-2xl">
                           <FaArrowRightToBracket size={12} />
                           <div className="text-xs">Sign In</div>
                         </div>
-                      </SignIn>
+                      </SignInButton>
                     </SignedOut>
 
                     <SignedIn>
