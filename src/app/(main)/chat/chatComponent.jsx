@@ -48,9 +48,9 @@ export default function ({ adminId, admin, selectedUserId, currentUserId, curren
 
   return (
     <div className={`flex md:p-3 flex-col ${admin ? 'md:h-[calc(100%-120px)] h-[calc(100%-120px)]' : 'md:h-[calc(100%-0px)] h-[calc(100%-40px)]'} overflow-scroll justify-end`}>
-      <div onClick={refresh} className={`border border-gray-600 absolute top-32 right-2 rounded-2xl p-3 bg-gray-700`}>
+      <div onClick={refresh} className={`border border-gray-600 absolute md:top-32 top-14 right-2 rounded-2xl p-2 md:p-3 bg-gray-700`}>
             <div className={`${reloading ? 'animate-spin' : null} rounded-full p-1 bg-gradient-to-tr from-black via-gray-800 to-gray-100`}>
-              <div className='rounded-full p-2 bg-gray-700'></div>
+              <div className='rounded-full p-1 md:p-2 bg-gray-700'></div>
             </div>
           </div>
       {chatsFiltered.length ?
