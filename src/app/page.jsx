@@ -167,12 +167,12 @@ export default function Home() {
                   <Image src={whatsapp} className='size-6 md:size-12' alt='' />
                 </div>
               </Link>
-              <Link href={''}>
+              <Link href={'https://www.instagram.com/yafet.el'}>
                 <div className="sidebar-4 opacity-0 bg-gray-700 rounded-full">
                   <Image src={instagram} className='size-6 md:size-12' alt='' />
                 </div>
               </Link>
-              <Link href={''}>
+              <Link href={'https://t.me/yafet44'}>
                 <div className="sidebar-5 opacity-0 bg-gray-700 rounded-full">
                   <Image src={telegram} className='size-6 md:size-12' alt='' />
                 </div>
