@@ -30,8 +30,6 @@ a {
   }
 }
 
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -88,8 +86,6 @@ a {
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
@@ -118,7 +114,8 @@ a {
   }
 }
 
-.hero-section-button, .top-text {
+.hero-section-button,
+.top-text {
   animation: forwards button-slide ease-in 1.5s;
 }
 
@@ -337,7 +334,7 @@ a {
 }
 
 .hero-section-button:hover {
-  transform: scale(1.04, 1.0);
+  transform: scale(1.04, 1);
 }
 
 .hero-background {
@@ -386,19 +383,17 @@ a {
   }
   10% {
     opacity: 0.2;
-
   }
-  15% { 
+  15% {
     opacity: 1;
     bottom: 96px;
   }
-  85% { 
+  85% {
     opacity: 1;
     bottom: 96px;
   }
   90% {
     opacity: 0.2;
-    
   }
   100% {
     opacity: 0;
