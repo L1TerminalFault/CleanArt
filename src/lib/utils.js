@@ -1,7 +1,7 @@
 import { auth, clerkClient } from '@clerk/nextjs/server';
 import { User } from '@/db/db';
 
-export const admin = ['user_2w3POJzF4HfS0rfXeMYzawQS4RG'] 
+export const admin = ['user_2w5pwIUWrqt2T9aT7ptQmnTb1kZ'] 
 
 export async function userId() {
   const { clerkId } = await getUserData()
