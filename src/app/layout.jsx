@@ -3,13 +3,14 @@ import {
   ClerkProvider,
   ClerkLoaded,
   SignInButton,
+  SignIn,
   SignedIn,
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
 import "./globals.css";
 import Link from "next/link";
-import { FaCartShopping, FaArrowRightToBracket, FaList } from "react-icons/fa6";
+import { FaArrowRightToBracket, FaList } from "react-icons/fa6";
 
 import { getUserData, isAdmin } from "@/lib/utils";
 
@@ -107,12 +108,12 @@ export default async function RootLayout({ children }) {
 
                   <div className="clerk-buttons flex flex-row gap-1">
                     <SignedOut>
-                      <SignInButton mode="modal">
+                      <SignIn mode="modal">
                         <div className="items-center bg-[#000000] border- transition-all border-gray-700 hover:bg-[#272529] flex flex-row gap-2 text-white px-3 py-1 rounded-2xl">
                           <FaArrowRightToBracket size={12} />
                           <div className="text-xs">Sign In</div>
                         </div>
-                      </SignInButton>
+                      </SignIn>
                     </SignedOut>
 
                     <SignedIn>
