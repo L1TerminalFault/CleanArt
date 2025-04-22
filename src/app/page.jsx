@@ -1,7 +1,5 @@
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
-import Link from 'next/link'
-import { SignInButton } from "@clerk/nextjs";
 
 
 // import icons from hugeicons.com
@@ -44,9 +42,7 @@ export default function Home() {
                 <Link href='/home'>
                   <div className="hero-section-button hover:border-gray-500 transition-all hero-section-button bg-gradient-to-l m-3 from-purple-600 via-[#aa55dd44] to-[#0000] flex flex-row py-2 px-7 rounded-3xl">
                     <div className="text-sm md:text-lg text-[#ffffff] font-semibold">
-                      <Link href={'/sign-in'}>
                         <div className="text-nowrap">Explore Beauty</div>
-                      </Link>
                     </div>
                     <div className="flex items-center justify-center ml-3">
                       <FaArrowRight size={20} color="#000" />
