@@ -13,7 +13,7 @@ export default function Error({ error, reset }) {
       <FaCogs color="gray" size={54} />
       <div className="text-gray-500 text-lg">Something went wrong</div>
       <div className="text-gray-600 text-xs md:text-sm max-w-[50%] my-2">
-        Make sure you are connected to the internet. If the issue persists, feel
+        Make sure you are connected to the internet. Make sure to have stable internet connection. If the issue persists, feel
         free to report it.
       </div>
       <button
