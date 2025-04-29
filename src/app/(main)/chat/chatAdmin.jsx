@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 import ChatComponent from './chatComponent'
@@ -10,9 +10,11 @@ import ChatComponent from './chatComponent'
 // and the selectedUser state is the mongodb _id of the currently selected client
 export default function ({ currentUserImage, users, chats, currentUserId }) {
   const [selectedUser, setSelectedUser] = useState(users[0])
-  const [chatsUpdated, setChatsUpdated] = useState(chats)
-  const chatsFiltered = chatsUpdated.filter(eachChat => eachChat.sender === selectedUser._id || eachChat.reciever === selectedUser._id || eachChat.sender === currentUserId || eachChat.reciever === currentUserId)
+  const [chatsFiltered, setChatsFiltered] = useState(chats.filter(eachChat => eachChat.sender === selectedUser._id || eachChat.reciever === selectedUser._id || eachChat.sender === currentUserId || eachChat.reciever === currentUserId))
 
+  useEffect(() => {
+    setChatsFiltered(chats.filter(eachChat => eachChat.sender === selectedUser._id || eachChat.reciever === selectedUser._id || eachChat.sender === currentUserId || eachChat.reciever === currentUserId))
+  }, [selectedUser])
 
   // const fetchData = async () => {
   //   const chats = await fetch('/api/fetchChats')
@@ -31,7 +33,14 @@ export default function ({ currentUserImage, users, chats, currentUserId }) {
       <div className="border-b-2 border-gray-600 p-3 md:p-4 flex flex-row gap-4">
         {users.length ?
           users.map(eachUser => (
-            <div key={eachUser._id} onClick={() => setSelectedUser(eachUser)} className={`${selectedUser._id === eachUser._id ? 'bg-slate-600' : ''} p-2 rounded-2xl hover:bg-slate-600`} >
+            <div
+              key={eachUser._id}
+              onClick={() => {
+                setSelectedUser(eachUser)
+              }}
+              className={`${selectedUser._id === eachUser._id ? 'bg-slate-600' : ''} p-2 rounded-2xl hover:bg-slate-600`}
+            >
+              
               <div className={`overflow-hidden rounded-full flex flex-col border-2 border-gray-500 size-12 md:size-16`}>
                 <Image
                   src={eachUser.image}
@@ -45,20 +54,20 @@ export default function ({ currentUserImage, users, chats, currentUserId }) {
             </div>
 
           ))
-         : <div className='text-lg text-gray-300 w-full flex items-center justify-center h-[calc(100vh-150px)]'>No Users</div>}
+          : <div className='text-lg text-gray-300 w-full flex items-center justify-center h-[calc(100vh-150px)]'>No Users</div>}
       </div>
 
 
       {selectedUser ?
-      <ChatComponent
-        selectedUserId={selectedUser._id}
-        currentUserId={currentUserId}
-        currentUserImage={currentUserImage}
-        selectedUserImage={selectedUser.image}
-        chatsFiltered={chatsFiltered}
-        admin
-      />
-      : null }
+        <ChatComponent
+          selectedUserId={selectedUser._id}
+          currentUserId={currentUserId}
+          currentUserImage={currentUserImage}
+          selectedUserImage={selectedUser.image}
+          chatsFiltered={chatsFiltered}
+          admin
+        />
+        : null}
     </div>
   )
 }
