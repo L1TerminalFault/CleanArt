@@ -10,7 +10,7 @@ import ChatComponent from './chatComponent'
 // and the selectedUser state is the mongodb _id of the currently selected client
 export default function ({ currentUserImage, users, chats, currentUserId }) {
   const [selectedUser, setSelectedUser] = useState(users[0])
-  const [chatsFiltered, setChatsFiltered] = useState(chats.filter(eachChat => eachChat.sender === selectedUser._id || eachChat.reciever === selectedUser._id || eachChat.sender === currentUserId || eachChat.reciever === currentUserId))
+  const [chatsFiltered, setChatsFiltered] = useState([])
 
   useEffect(() => {
     setChatsFiltered(chats.filter(eachChat => eachChat.sender === selectedUser._id || eachChat.reciever === selectedUser._id || eachChat.sender === currentUserId || eachChat.reciever === currentUserId))
