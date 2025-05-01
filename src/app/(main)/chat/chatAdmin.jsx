@@ -26,7 +26,7 @@ export default function ({ currentUserImage, users, currentUserId }) {
 
   return (
     <div className="h-[calc(100vh-120px)] md:h-[calc(100vh-170px)] pb-12 md:pb-0">
-      <div className="border-b-2 border-gray-600 p-3 md:p-4 flex flex-row gap-4">
+      <div className="border-b-2 overflow-scroll border-gray-600 p-3 md:p-4 flex flex-row gap-4">
         {users.length ?
           users.map(eachUser => (
             <div
