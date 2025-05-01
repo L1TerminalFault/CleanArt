@@ -16,7 +16,7 @@ export default async function () {
   }
 
   const usersList = await User.find()
-  let users = usersList.filter(user => !admin.includes(user.clerkId))
+  let users = usersList.filter(user => admin.includes(user.clerkId) ? false : true)
   users = JSON.parse(JSON.stringify(users))
 
   const { image } = user
