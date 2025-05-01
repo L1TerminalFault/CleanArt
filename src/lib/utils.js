@@ -15,8 +15,7 @@ export async function userId() {
 export async function getUserData() {
   const { userId, sessionClaims } = await auth()
   if (userId) {
-    const user = (await clerkClient()).users?.getUser(sessionClaims.sub)
-    const userData = await user
+    const userData = await (await clerkClient())?.users?.getUser(sessionClaims.sub)
 
     const username = userData.firstName + ' ' + userData.lastName
     const email = userData.emailAddresses[0].emailAddress

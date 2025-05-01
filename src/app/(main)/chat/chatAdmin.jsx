@@ -8,25 +8,21 @@ import ChatComponent from './chatComponent'
 
 // currentUserId is the mongodb _id of the admin since this is the admin component
 // and the selectedUser state is the mongodb _id of the currently selected client
-export default function ({ currentUserImage, users, chats, currentUserId }) {
+export default function ({ currentUserImage, users, currentUserId }) {
   const [selectedUser, setSelectedUser] = useState(users[0])
-  const [chatsFiltered, setChatsFiltered] = useState([])
+  const [chats, setChats] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  const fetchChats = async () => {
+    setLoading(true)
+    const res = await (await fetch('/api/fetchChats')).json()
+    setChats(res.filter(eachChat => ((eachChat.sender === selectedUser._id || eachChat.reciever === selectedUser._id))))
+    setLoading(false)
+  }
 
   useEffect(() => {
-    setChatsFiltered(chats.filter(eachChat => eachChat.sender === selectedUser._id || eachChat.reciever === selectedUser._id || eachChat.sender === currentUserId || eachChat.reciever === currentUserId))
+    fetchChats()
   }, [selectedUser])
-
-  // const fetchData = async () => {
-  //   const chats = await fetch('/api/fetchChats')
-  //   try {
-  //     const chatsl = await chats.json()
-  //     console.log('these are the chats', chatsl)
-  //     if (chatsl.filter) setChatsUpdated(chatsl)
-  //   } catch (err) {
-  //     return
-  //   }
-
-  // }
 
   return (
     <div className="h-[calc(100vh-120px)] md:h-[calc(100vh-170px)] pb-12 md:pb-0">
@@ -37,6 +33,7 @@ export default function ({ currentUserImage, users, chats, currentUserId }) {
               key={eachUser._id}
               onClick={() => {
                 setSelectedUser(eachUser)
+                fetchChats()
               }}
               className={`${selectedUser._id === eachUser._id ? 'bg-slate-600' : ''} p-2 rounded-2xl hover:bg-slate-600`}
             >
@@ -54,7 +51,8 @@ export default function ({ currentUserImage, users, chats, currentUserId }) {
             </div>
 
           ))
-          : <div className='text-lg text-gray-300 w-full flex items-center justify-center h-[calc(100vh-150px)]'>No Users</div>}
+          : <div className='text-lg text-gray-300 w-full flex items-center justify-center h-[calc(100vh-150px)]'>No Users</div>
+          }
       </div>
 
 
@@ -64,7 +62,7 @@ export default function ({ currentUserImage, users, chats, currentUserId }) {
           currentUserId={currentUserId}
           currentUserImage={currentUserImage}
           selectedUserImage={selectedUser.image}
-          chatsFiltered={chatsFiltered}
+          chatsFiltered={chats}
           admin
         />
         : null}
