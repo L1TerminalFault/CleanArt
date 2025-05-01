@@ -14,8 +14,8 @@ export default function () {
 
         </div>
         <div className="sidebar-3 opacity-0 p-9 bg flex-1 border-2 border-gray-700 rounded-3xl bg-black">
-          <div className="text-3xl font-semibold text-white">About the Artist</div>
-          <div className="text-xl text-white">Hi! I am Yafet, experienced Painter for over 20 yrs, I am guaranteed to provide cutting edge art designs, I am also a developer </div>
+          <div className="text-xl font-semibold text-white">About the Artist</div>
+          <div className=" text-white">Hi! I am Yafet, experienced Painter for over 20 yrs, I am guaranteed to provide cutting edge art designs, I am also a developer </div>
         </div>
       </div>
       <div className="text-xl text-gray-500 mt-6 text-center">Contact the Artist</div>
