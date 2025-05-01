@@ -75,11 +75,11 @@ export default function () {
                         (eachProduct) => eachProduct._id === eachOrder.productId,
                       ).image]
                     }
-                    className="rounded-lg size-32"
+                    className="rounded-lg md:size-24 size-12"
                     alt=""
                   />
                   <div className="p-2 pt-0">
-                    <div className=" mb-1 md:text-xl text-lg font-semibold">
+                    <div className=" mb-1 md:text-xl text-sm font-semibold">
                       {
                         products.find(
                           (eachProduct) =>
@@ -87,7 +87,7 @@ export default function () {
                         ).title
                       }
                     </div>
-                    <div className="text-xs max-w-[70%] md:text-sm">
+                    <div className="text-[8px] max-w-[70%] md:text-sm">
                       {
                         products.find(
                           (eachProduct) =>
