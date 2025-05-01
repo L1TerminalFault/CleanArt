@@ -2,7 +2,8 @@
 
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import { FaCommentDots } from 'react-icons/fa'
+import { FaCommentDots,  } from 'react-icons/fa'
+import { TbReload } from 'react-icons/tb'
 
 import Loading from '@/components/loading'
 
@@ -57,8 +58,8 @@ export default function ({ adminId, admin, selectedUserId, currentUserId, curren
       {reloading ? <Loading /> :
         (<>
           <div onClick={refresh} className={`border border-gray-600 absolute md:top-32 top-14 right-2 rounded-2xl p-2 md:p-3 bg-gray-700`}>
-            <div className={`${reloading ? 'animate-spin' : null} rounded-full p-1 bg-gradient-to-tr from-black via-gray-800 to-gray-100`}>
-              <div className='rounded-full p-1 md:p-2 bg-gray-700'></div>
+            <div className={`${reloading ? 'animate-spin' : null} rounded-full p-1`}>
+              <TbReload size={40} color='white' />
             </div>
           </div>
           {chatsFiltered.length ?

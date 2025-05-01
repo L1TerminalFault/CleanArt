@@ -30,7 +30,7 @@ const Pallete = ({ image, title, price, delivery }) => (
 const Category = ({ category, children }) => (
   <div className="flex flex-col">
     <div className="text-lg mb-3 mt-4 text-white font-semibold pl-12">{category[0].toUpperCase() + category.slice(1)}</div>
-    <div className="flex-wrap  flex gap-2">
+    <div className="grid grid-cols-2 lg:flex lg:flex-wrap gap-2">
       {children}
     </div>
   </div>
