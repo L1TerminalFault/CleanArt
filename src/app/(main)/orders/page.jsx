@@ -75,7 +75,7 @@ export default function () {
                         (eachProduct) => eachProduct._id === eachOrder.productId,
                       ).image]
                     }
-                    className="rounded-lg md:size-24 size-12"
+                    className="rounded-lg md:size-32 size-24"
                     alt=""
                   />
                   <div className="p-2 pt-0">
@@ -87,7 +87,7 @@ export default function () {
                         ).title
                       }
                     </div>
-                    <div className="text-[8px] max-w-[70%] md:text-sm">
+                    <div className="text-xs max-w-[70%] md:text-sm">
                       {
                         products.find(
                           (eachProduct) =>
@@ -101,12 +101,12 @@ export default function () {
                   <Image
                     src={users.find(eachUser => eachUser._id === eachOrder.user).image}
                     alt=""
-                    width={52}
-                    height={52}
+                    width={32}
+                    height={32}
                     className="rounded-full"
 
                   />
-                  <div className="text-right text-xs">{users.find(eachUser => eachUser._id === eachOrder.user).username}</div>
+                  <div className="text-right text-[8px]">{users.find(eachUser => eachUser._id === eachOrder.user).username}</div>
                 </div>
               </div>
 
