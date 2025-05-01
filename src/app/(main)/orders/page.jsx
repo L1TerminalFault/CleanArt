@@ -111,7 +111,7 @@ export default function () {
               </div>
 
               <div className="flex justify-between items-center flex-row rounded-full">
-                <div className="text-sm ml-2">{eachOrder.amount}</div>
+                <div className="text-sm ml-2 capitalize">{eachOrder.amount}</div>
                 {delivering ? <div className="rounded-full text-sm bg-gray-800 py-1 px-3">Updating</div>
                 :
                 eachOrder.amount === 'pending' ? 
