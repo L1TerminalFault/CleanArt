@@ -42,12 +42,12 @@ export default function ({ currentUserImage, users, currentUserId }) {
                 <Image
                   src={eachUser.image}
                   alt=''
-                  width={34} height={34}
+                  width={30} height={30}
                   className='size-24'
                 />
 
               </div>
-              <div className='text-white'>{eachUser.username}</div>
+              <div className='text-white text-xs text-center md:text-base'>{eachUser.username}</div>
             </div>
 
           ))
