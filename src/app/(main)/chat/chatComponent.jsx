@@ -58,7 +58,7 @@ export default function ({ adminId, admin, selectedUserId, currentUserId, curren
   }
 
   return (
-    <div className={`flex md:p-3 flex-col ${admin ? 'md:h-[calc(100%-120px)] h-[calc(100%-120px)]' : 'md:h-[calc(100%-0px)] h-[calc(100%-100px)]'} overflow-scroll justify-end`}>
+    <div className={`flex md:p-3 flex-col ${admin ? 'md:h-[calc(100%-120px)] h-[calc(100%-120px)]' : 'md:h-[calc(100%-0px)] h-[calc(100%-40px)]'} overflow-scroll justify-end`}>
       {containerReloading ? <Loading /> :
         (<>
           <div onClick={refresh} className={`border border-gray-600 absolute md:top-32 top-14 right-2 rounded-2xl p-1 md:p-3 bg-black`}>
