@@ -35,7 +35,7 @@ export default function ({ currentUserImage, users, currentUserId }) {
                 setSelectedUser(eachUser)
                 fetchChats()
               }}
-              className={`${selectedUser._id === eachUser._id ? 'bg-slate-600' : ''} p-2 rounded-2xl hover:bg-slate-600`}
+              className={`${selectedUser._id === eachUser._id ? 'bg-slate-600' : ''} flex items-center justify-center gap-1 p-2 rounded-2xl hover:bg-slate-600`}
             >
               
               <div className={`overflow-hidden rounded-full flex flex-col border-2 border-gray-500 size-12 md:size-16`}>
@@ -47,7 +47,7 @@ export default function ({ currentUserImage, users, currentUserId }) {
                 />
 
               </div>
-              <div className='text-white text-xs text-center md:text-base'>{eachUser.username}</div>
+              <div className='text-white text-xs font-[10px] text-center md:text-base'>{eachUser.username}</div>
             </div>
 
           ))

@@ -18,7 +18,7 @@ export default function () {
           <div className=" text-white">Hi! I am Yafet, experienced Painter for over 20 yrs, I am guaranteed to provide cutting edge art designs, I am also a developer </div>
         </div>
       </div>
-      <div className="text-xl text-gray-500 mt-6 text-center">Contact the Artist</div>
+      <div className="text-xl text-gray-500 mt-3 text-center">Contact the Artist</div>
       <div className="p-3 flex overflow-scroll justify-center flex-row mt-1 gap-6">
         <Link href={''}>
           <div className="sidebar-3 opacity-0 bg-gray-700 rounded-full">

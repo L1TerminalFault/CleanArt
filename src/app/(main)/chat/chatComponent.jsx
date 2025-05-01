@@ -11,12 +11,16 @@ export default function ({ adminId, admin, selectedUserId, currentUserId, curren
   const [chatsFiltered, setChatsFiltered] = useState([])
   const [update, setUpdate] = useState(selectedUserId)
   const messagesEndRef = useRef(null)
-
+  const [containerReloading, setContainerReloading] = useState(true)
   const [reloading, setReloading] = useState(true)
 
   useEffect(() => {
-    refresh()
-    setUpdate(selectedUserId)
+    const reload = async () => {
+      setContainerReloading(true)
+      await refresh()
+      setContainerReloading(false)
+    }
+    reload()
   }, [selectedUserId])
 
   const handleSend = async (formData) => {
@@ -55,7 +59,7 @@ export default function ({ adminId, admin, selectedUserId, currentUserId, curren
 
   return (
     <div className={`flex md:p-3 flex-col ${admin ? 'md:h-[calc(100%-120px)] h-[calc(100%-120px)]' : 'md:h-[calc(100%-0px)] h-[calc(100%-100px)]'} overflow-scroll justify-end`}>
-      {reloading ? <Loading /> :
+      {containerReloading ? <Loading /> :
         (<>
           <div onClick={refresh} className={`border border-gray-600 absolute md:top-32 top-14 right-2 rounded-2xl p-1 md:p-3 bg-gray-700`}>
             <div className={`${reloading ? 'animate-spin' : null} rounded-full`}>
