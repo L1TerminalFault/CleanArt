@@ -403,9 +403,9 @@ a {
 
 @keyframes spin {
   to {
-    transform: rotate(-360deg);
+    transform: rotate(360deg);
   }
 }
 .animate {
-  animation: spin 1s linear infinite;
+  animation: spin 1s linear reverse infinite;
 }
