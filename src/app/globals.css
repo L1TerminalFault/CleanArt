@@ -400,3 +400,12 @@ a {
     bottom: 0px;
   }
 }
+
+@keyframes spin {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+.animate {
+  animation: spin 1s linear infinite;
+}

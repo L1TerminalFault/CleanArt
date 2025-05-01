@@ -46,33 +46,33 @@ export default function () {
         <Link href={'/products'}>
           <div className="sidebar-2 py-2 px-5 rounded-xl transition-all hover:bg-gray-800 border-2 border-[#0000] opacity-0 flex gap-2 flex-col items-center rounded-3x">
             <div className="flex items-center justify-center overflow-hidden rounded-full">
-              <Image src={icon_portrait} className="size-14 md:size-20" alt="" />
+              <Image src={icon_portrait} className="size-12 md:size-20" alt="" />
             </div>
-            <div className="text-white" >Portrait</div>
+            <div className="text-white text-xs" >Portrait</div>
           </div>
         </Link>
         <Link href={'/products'}>
           <div className="sidebar-3 py-2 px-5 rounded-xl transition-all hover:bg-gray-800 border-2 border-[#0000] opacity-0 flex gap-2 flex-col items-center rounded-3x">
           <div className="flex items-center justify-center overflow-hidden rounded-full">
-            <Image src={icon_landscape} className="size-14 md:size-20" alt="" />
+            <Image src={icon_landscape} className="size-12 md:size-20" alt="" />
           </div>
-          <div className="text-white" >Landscape</div>
+          <div className="text-white text-xs" >Landscape</div>
         </div>
         </Link>
         <Link href={'/products'}>
            <div className="sidebar-4 py-2 px-5 rounded-xl transition-all hover:bg-gray-800 border-2 border-[#0000] opacity-0 flex gap-2 flex-col items-center rounded-3x">
           <div className="flex items-center justify-center overflow-hidden rounded-full">
-            <Image src={icon_abstract} className="size-14 md:size-20" alt="" />
+            <Image src={icon_abstract} className="size-12 md:size-20" alt="" />
           </div>
-          <div className="text-white" >Abstract</div>
+          <div className="text-white text-xs" >Abstract</div>
         </div>
         </Link>
         <Link href={'/products'}>
           <div className="sidebar-5 py-2 px-5 rounded-xl transition-all hover:bg-gray-800 border-2 border-[#0000] opacity-0 flex gap-2 flex-col items-center rounded-3x">
           <div className="flex items-center justify-center overflow-hidden rounded-full">
-            <Image src={icon_modern} className="size-14 md:size-20" alt="" />
+            <Image src={icon_modern} className="size-12 md:size-20" alt="" />
           </div>
-          <div className="text-white" >Modern</div>
+          <div className="text-white text-xs" >Modern</div>
         </div>
         </Link>
         

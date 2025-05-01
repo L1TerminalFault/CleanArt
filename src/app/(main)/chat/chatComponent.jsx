@@ -62,7 +62,7 @@ export default function ({ adminId, admin, selectedUserId, currentUserId, curren
       {containerReloading ? <Loading /> :
         (<>
           <div onClick={refresh} className={`border border-gray-600 absolute md:top-32 top-14 right-2 rounded-2xl p-1 md:p-3 bg-black`}>
-            <div className={`${reloading ? 'animate-spin' : null} rounded-full`}>
+            <div className={`${reloading ? 'animate' : null} rounded-full`}>
               <TbReload size={30} color='white' />
             </div>
           </div>
