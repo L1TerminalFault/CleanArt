@@ -106,7 +106,7 @@ export default function () {
                     className="rounded-full"
 
                   />
-                  <div className="text-right text-[8px]">{users.find(eachUser => eachUser._id === eachOrder.user).username}</div>
+                  <div className="text-right text-xs">{users.find(eachUser => eachUser._id === eachOrder.user).username}</div>
                 </div>
               </div>
 
