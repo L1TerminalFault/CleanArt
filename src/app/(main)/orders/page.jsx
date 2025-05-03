@@ -39,7 +39,6 @@ export default function () {
 
   }, []);
 
-
   const deliver = async (id) => {
     setDelivering(true)
     await fetch('/api/orders', {
@@ -70,13 +69,15 @@ export default function () {
               <div className="flex flex-row items-center justify-between p-2 ">
                 <div className="gap-2 max-w-[80%] flex items-center">
                   <Image
-                    src={images['img_' +
-                      products.find(
-                        (eachProduct) => eachProduct._id === eachOrder.productId,
-                      ).image]
+                    src={
+                      products.find((eachProduct) => eachProduct._id === eachOrder.productId).image.includes('http') 
+                      ? products.find((eachProduct) => eachProduct._id === eachOrder.productId).image
+                      : images['img_' + products.find((eachProduct) => eachProduct._id === eachOrder.productId).image]
                     }
                     className="rounded-lg md:size-32 size-24"
                     alt=""
+                    width={100}
+                    height={100}
                   />
                   <div className="p-2 pt-0">
                     <div className=" mb-1 md:text-xl text-sm font-semibold">

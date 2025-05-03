@@ -16,44 +16,6 @@ import { getUserData, isAdmin } from "@/lib/utils";
 
 import { User, addUser } from "../db/db.js";
 import { FaArtstation } from "react-icons/fa";
-// import { mongoUserId } from "@/lib/utils";
-// const user = (await mongoUserId())._id
-// const data = [
-//   {
-//     category: 'modern',
-//     time: 'In 2 weeks',
-//     title: 'Modern Abstract',
-//     description: 'Painting of the modern emotions',
-//     image: '31',
-//     price: '$45,999'
-//   },
-//   {
-//     category: 'modern',
-//     time: 'In 2 weeks',
-//     title: 'Modern Abstract',
-//     description: 'Painting of the modern emotions',
-//     image: '32',
-//     price: '$45,999'
-//   },
-//   {
-//     category: 'modern',
-//     time: 'In 1 week',
-//     title: 'Modern Abstract',
-//     description: 'Painting of the modern emotions',
-//     image: '33',
-//     price: '$45,999'
-//   },
-//   {
-//     category: 'modern',
-//     time: 'In 5 days',
-//     title: 'Modern Abstract',
-//     description: 'Painting of the modern emotions',
-//     image: '34',
-//     price: '$45,999'
-//   }
-
-// ]
-// await Product.insertMany(data)
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -119,7 +81,7 @@ export default async function RootLayout({ children }) {
                     <SignedIn>
                       {admin ? (
                         <Link href={"/orders"}>
-                          <div className="rounded-full bg-black items-center flex-row text-center gap-2 flex itemscenter justify-center hover:bg-gray-600 transition-all mr-2 active:bg-gray-600 p-1 px-3">
+                          <div className="rounded-full bg-black items-center flex-row text-center gap-2 flex itemscenter justify-center transition-all mr-2 active:bg-gray-600 p-1 px-3">
                             <FaList size={12} color="white" />
                             <div className="text-white text-">Orders</div>
                           </div>

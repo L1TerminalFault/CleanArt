@@ -75,7 +75,13 @@ export default function ({ products }) {
         <div className="p-6 max-h-[calc(100%-0px)] overflow-scroll">
           <div className='flex flex-col md:flex-row mb-12 md:mb-0 text-white'>
             <div className='bg-gradient-to-r md:bg-gradient-to-l from-gray-700 to-[#0000] flex items-center justify-center rounded-t-3xl md:rounded-none overflow-hidden flex-0 w-[100%]'>
-              <Image src={images['img_' + product.image]} alt='' className='p-1 rounded-3xl h-full w-[90%]' />
+              <Image 
+                src={product.image.includes('http') ? product.image : images['img_' + product.image]} 
+                alt='' 
+                width={100}
+                height={100}
+                className='p-1 rounded-3xl h-full w-[90%]' 
+              />
             </div>
             <div className='w-full'>
               <div className='lg:gap-2 flex flex-col justify-center bg-gradient-to-l from-[#0000] to-gray-700 rounded-b-3xl md:rounded-none h-full w-full p-5 flex-1'>

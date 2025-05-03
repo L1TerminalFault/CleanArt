@@ -111,9 +111,11 @@ export default function ({ products, user, orders }) {
                   <div className='flex flex-row w-full'>
                     <div className='size-52 rounded-2xl overflow-hidden'>
                       <Image
-                        src={images['img_' + eachProduct.image]}
+                        src={eachProduct.image.includes('http') ? eachProduct.image : images['img_' + eachProduct.image]}
                         alt=''
-                        className='h-full'
+                        width={100}
+                        height={100}
+                        className='h-full w-full'
                       />
                     </div>
                     <div className='ml-2 items-center rounded-2xl flex-1 p-3 bg-gradient-to-r from-gray-600 via-gray-700'>
@@ -140,12 +142,12 @@ export default function ({ products, user, orders }) {
             ))}
           </div>
           {emptyCart ? null : placingOrder ?
-            <div onClick={placeOrder} style={{ boxShadow: '0px 0px 12px #041a0f' }} className='hover:bg-green-400 text-gray-900 transition-all active:bg-green-400 absolute rounded-full md:px-9 py-2 md:py-4 px-5 font-semibold md:bottom-5 bottom-24 right-5 text-lg md:text-xl bg-green-600'>
+            <div style={{ boxShadow: '0px 0px 12px #041a0f' }} className=' text-gray-900 transition-all absolute rounded-full md:px-9 py-2 md:py-4 px-5 font-semibold md:bottom-5 bottom-24 right-5 text-lg md:text-xl bg-purple-600'>
               <div className="rounded-full animate-spin p-1 bg-gradient-to-tr from-gray-500 to-gray-900">
-                <div className="rounded-full p-2 bg-green-600"></div>
+                <div className="rounded-full p-2 bg-purple-600"></div>
               </div>
             </div>
-            : <div onClick={placeOrder} style={{ boxShadow: '0px 0px 12px #041a0f' }} className='hover:bg-green-400 text-gray-900 transition-all active:bg-green-400 absolute rounded-full md:px-9 py-2 md:py-4 px-5 font-semibold md:bottom-5 bottom-24 right-5 text-lg md:text-xl bg-green-600'>Place Order</div>
+            : <div onClick={placeOrder} style={{ boxShadow: '0px 0px 12px #041a0f' }} className='hover:bg-purple-400 text-gray-900 transition-all active:bg-purple-400 absolute rounded-full md:px-9 py-2 md:py-4 px-5 font-semibold md:bottom-5 bottom-24 right-5 text-lg md:text-xl bg-purple-600'>Place Order</div>
           }
         </div>
         : (
