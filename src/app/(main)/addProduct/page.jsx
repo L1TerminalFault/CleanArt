@@ -48,9 +48,17 @@ export default function () {
       const base64Image = reader.result;
       setImage(base64Image);
 
-      const result = await cloudinary.v2.uploader.upload(body.image, {
-        resource_type: "auto",
-      });
+      const formData = new FormData()
+
+      formData.append('file', `data:image/${file.type.split('/')[1]};base64,${base64Image}`)
+      formData.append('upload_preset', 'client')
+
+
+      const result = await (await fetch('https://api.cloudinary.com/v1_1/dgyebeipy/image/upload', {
+        method: 'POST',
+        body: formData
+      })).json()
+
       setImageUrl(result.secure_url)
     };
   };
