@@ -7,6 +7,13 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+export const config = {
+  api: {
+    bodyParser: false, // Required for file uploads
+  },
+};
+
+
 export const POST = async (req, res) => {
   try {
     const body = await req.json();
