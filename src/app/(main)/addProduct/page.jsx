@@ -5,13 +5,13 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { IoMdCloudUpload } from "react-icons/io";
 import { IoMdAdd } from "react-icons/io";
-import cloudinary from "cloudinary";
+// import cloudinary from "cloudinary";
 
-cloudinary.config({
-  cloud_name: 'dgyebeipy',
-  api_key: '267816747737431',
-  api_secret: '1Kq0wb4gf4GHF-rvMjOoOg0ociI',
-});
+// cloudinary.config({
+//   cloud_name: 'dgyebeipy',
+//   api_key: '267816747737431',
+//   api_secret: '1Kq0wb4gf4GHF-rvMjOoOg0ociI',
+// });
 
 import PopUp from "@/components/pop_up";
 
