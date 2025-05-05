@@ -5,9 +5,15 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { IoMdCloudUpload } from "react-icons/io";
 import { IoMdAdd } from "react-icons/io";
+import cloudinary from "cloudinary";
+
+cloudinary.config({
+  cloud_name: 'dgyebeipy',
+  api_key: '267816747737431',
+  api_secret: '1Kq0wb4gf4GHF-rvMjOoOg0ociI',
+});
 
 import PopUp from "@/components/pop_up";
-import { TbCongruentTo } from "react-icons/tb";
 
 export default function () {
   const [category, setCategory] = useState("");
@@ -16,6 +22,7 @@ export default function () {
   const [time, setTime] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null)
   const [error, setError] = useState({});
   const [popError, setPopError] = useState(false);
 
@@ -40,6 +47,11 @@ export default function () {
     reader.onload = async () => {
       const base64Image = reader.result;
       setImage(base64Image);
+
+      const result = await cloudinary.v2.uploader.upload(body.image, {
+        resource_type: "auto",
+      });
+      setImageUrl(result.secure_url)
     };
   };
 
@@ -90,7 +102,7 @@ export default function () {
           description,
           time,
           price,
-          image,
+          image: imageUrl,
         }),
       });
 
