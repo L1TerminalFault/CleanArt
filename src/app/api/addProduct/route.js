@@ -7,7 +7,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export const PUT = async (req, res) => {
+export const POST = async (req, res) => {
   try {
     const body = await req.json();
     console.log("contents of the body are", body);

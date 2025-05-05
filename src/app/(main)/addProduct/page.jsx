@@ -80,7 +80,7 @@ export default function () {
 
     try {
       const response = await fetch("/api/addProduct", {
-        method: "PUT",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
