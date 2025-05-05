@@ -20,6 +20,6 @@ export const POST = async (req, res) => {
 
     return Response.json({ url });
   } catch (err) {
-    return Response.json({ message: "Error: Couldn't upload image" });
+    return Response.json({ error: "Error: Couldn't upload image" });
   }
 };

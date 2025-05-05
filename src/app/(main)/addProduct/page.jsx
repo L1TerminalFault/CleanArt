@@ -94,7 +94,8 @@ export default function () {
         }),
       });
 
-      const { url } = await response.json();
+      const { error } = await response.json();
+      if (error) throw new Error()
       router.push("/products");
     } catch (error) {
       setPopError(true);
