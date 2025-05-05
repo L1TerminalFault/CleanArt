@@ -4,7 +4,7 @@ export const POST = async (req, res) => {
   try {
     const body = await req.json();
     
-    await Product.insertOne({ ...body, image });
+    await Product.insertOne(body);
 
     return Response.json({ success: true });
   } catch (err) {
