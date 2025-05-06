@@ -41,7 +41,7 @@ export default function () {
   const resolverRef = useRef(null);
 
   useEffect(() => {
-    if (resolverRef.current) {
+    if (imageUrl && resolverRef.current) {
       resolverRef.current(); // resolve the promise
       resolverRef.current = null;
     }
