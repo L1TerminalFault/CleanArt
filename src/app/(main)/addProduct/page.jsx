@@ -38,22 +38,6 @@ export default function () {
   const [uploading, setUploading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  const resolverRef = useRef(null);
-
-  useEffect(() => {
-    if (imageUrl && resolverRef.current) {
-      resolverRef.current(); // resolve the promise
-      resolverRef.current = null;
-    }
-  }, [imageUrl]);
-
-  const waitForImageUrlUpdate = () => {
-    return new Promise((resolve) => {
-      resolverRef.current = resolve;
-    });
-  };
-
-
   useEffect(() => {
     setSubmitting(uploading);
   }, [uploading]);
@@ -69,7 +53,6 @@ export default function () {
     if (!result.secure_url) throw new Error();
     setImageUrl(result.secure_url);
   }
-
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -129,7 +112,7 @@ export default function () {
 
       await uploadToCloudinary()
 
-      await waitForImageUrlUpdate()
+      await new Promise(resolve => setTimeout(resolve, 400))
 
       const response = await fetch("/api/addProduct", {
         method: "POST",
