@@ -111,9 +111,9 @@ export default function () {
         setImageUrl(result.secure_url);
       }
 
-      await new Promise(resolve => setTimeout(resolve, 400))
+      // await new Promise(resolve => setTimeout(resolve, 400))
       await upload()
-      await new Promise(resolve => setTimeout(resolve, 400))
+      await new Promise(resolve => setTimeout(resolve, 9000))
 
       if (!imageUrl) {
         await upload()
