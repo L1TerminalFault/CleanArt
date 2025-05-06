@@ -53,13 +53,18 @@ export default function () {
       formData.append('file', `data:image/${file.type.split('/')[1]};base64,${base64Image}`)
       formData.append('upload_preset', 'client')
 
-
-      const result = await (await fetch('https://api.cloudinary.com/v1_1/dgyebeipy/image/upload', {
+      try {
+        const result = await (await fetch('https://api.cloudinary.com/v1_1/dgyebeipy/image/upload', {
         method: 'POST',
         body: formData
       })).json()
-
+      if (!result.secure_url) throw new Error()
       setImageUrl(result.secure_url)
+      } catch (err) {
+              setPopError(true);
+      setTimeout(() => setPopError(false), 8000);
+      }
+      
     };
   };
 
