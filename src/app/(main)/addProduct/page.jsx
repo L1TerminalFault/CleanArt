@@ -42,7 +42,7 @@ export default function () {
     setSubmitting(uploading);
   }, [uploading]);
 
-  const handleImageUpload = async (e) => {
+  const handleImageUpload = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
