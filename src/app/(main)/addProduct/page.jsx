@@ -42,18 +42,6 @@ export default function () {
     setSubmitting(uploading);
   }, [uploading]);
 
-  const uploadToCloudinary = async () => {
-    const result = await (
-      await fetch("https://api.cloudinary.com/v1_1/dgyebeipy/image/upload", {
-        method: "POST",
-        body: formData,
-      })
-    ).json();
-
-    if (!result.secure_url) throw new Error();
-    setImageUrl(result.secure_url);
-  }
-
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -110,10 +98,20 @@ export default function () {
 
     try {
 
-      await uploadToCloudinary()
+
+      const result = await (
+        await fetch("https://api.cloudinary.com/v1_1/dgyebeipy/image/upload", {
+          method: "POST",
+          body: formData,
+        })
+      ).json();
+
+      if (!result.secure_url) throw new Error();
+      setImageUrl(result.secure_url);
+
 
       await new Promise(resolve => setTimeout(resolve, 400))
-
+      if (!imageUrl) throw new Error()
       const response = await fetch("/api/addProduct", {
         method: "POST",
         headers: {
