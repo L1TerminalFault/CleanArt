@@ -61,6 +61,7 @@ export default function () {
     };
   };
 
+
   const handleSubmit = async () => {
     let anyError = undefined;
     if (!image) {
@@ -98,20 +99,28 @@ export default function () {
 
     try {
 
+      const upload = async () => {
+        const result = await (
+          await fetch("https://api.cloudinary.com/v1_1/dgyebeipy/image/upload", {
+            method: "POST",
+            body: formData,
+          })
+        ).json();
 
-      const result = await (
-        await fetch("https://api.cloudinary.com/v1_1/dgyebeipy/image/upload", {
-          method: "POST",
-          body: formData,
-        })
-      ).json();
-
-      if (!result.secure_url) throw new Error();
-      setImageUrl(result.secure_url);
-
+        if (!result.secure_url) throw new Error();
+        setImageUrl(result.secure_url);
+      }
 
       await new Promise(resolve => setTimeout(resolve, 400))
-      if (!imageUrl) throw new Error()
+      await upload()
+      await new Promise(resolve => setTimeout(resolve, 400))
+
+      if (!imageUrl) {
+        await upload()
+        if (!imageUrl) 
+          throw new Error()
+      }
+
       const response = await fetch("/api/addProduct", {
         method: "POST",
         headers: {
