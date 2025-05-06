@@ -38,9 +38,38 @@ export default function () {
   const [uploading, setUploading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
+  const resolverRef = useRef(null);
+
+  useEffect(() => {
+    if (resolverRef.current) {
+      resolverRef.current(); // resolve the promise
+      resolverRef.current = null;
+    }
+  }, [imageUrl]);
+
+  const waitForImageUrlUpdate = () => {
+    return new Promise((resolve) => {
+      resolverRef.current = resolve;
+    });
+  };
+
+
   useEffect(() => {
     setSubmitting(uploading);
   }, [uploading]);
+
+  const uploadToCloudinary = async () => {
+    const result = await (
+      await fetch("https://api.cloudinary.com/v1_1/dgyebeipy/image/upload", {
+        method: "POST",
+        body: formData,
+      })
+    ).json();
+
+    if (!result.secure_url) throw new Error();
+    setImageUrl(result.secure_url);
+  }
+
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -97,26 +126,10 @@ export default function () {
     setUploading(true);
 
     try {
-      const result = await (
-        await fetch("https://api.cloudinary.com/v1_1/dgyebeipy/image/upload", {
-          method: "POST",
-          body: formData,
-        })
-      ).json();
 
-      if (!result.secure_url) throw new Error();
-      setImageUrl(result.secure_url);
+      await uploadToCloudinary()
 
-      const waitForImageUrl = (resolve) => {
-        while (true) {
-          if (imageUrl?.includes("https://")) {
-            resolve();
-            return;
-          }
-        }
-      };
-
-      await new Promise(waitForImageUrl);
+      await waitForImageUrlUpdate()
 
       const response = await fetch("/api/addProduct", {
         method: "POST",
