@@ -22,9 +22,10 @@ export default function () {
   const [time, setTime] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null)
+  const [imageUrl, setImageUrl] = useState(null);
   const [error, setError] = useState({});
   const [popError, setPopError] = useState(false);
+  const [popSuccess, setPopSuccess] = useState(false);
 
   const fileInputRef = useRef(null);
   const router = useRouter();
@@ -33,6 +34,7 @@ export default function () {
     fileInputRef.current.click();
   };
 
+  const [formData, setFormData] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
@@ -44,27 +46,18 @@ export default function () {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = async () => {
+    reader.onload = () => {
       const base64Image = reader.result;
       setImage(base64Image);
 
-      const formData = new FormData()
+      const formData = new FormData();
 
-      formData.append('file', `data:image/${file.type.split('/')[1]};base64,${base64Image}`)
-      formData.append('upload_preset', 'client')
-
-      try {
-        const result = await (await fetch('https://api.cloudinary.com/v1_1/dgyebeipy/image/upload', {
-        method: 'POST',
-        body: formData
-      })).json()
-      if (!result.secure_url) throw new Error()
-      setImageUrl(result.secure_url)
-      } catch (err) {
-              setPopError(true);
-      setTimeout(() => setPopError(false), 8000);
-      }
-      
+      formData.append(
+        "file",
+        `data:image/${file.type.split("/")[1]};base64,${base64Image}`,
+      );
+      formData.append("upload_preset", "client");
+      setFormData(formData);
     };
   };
 
@@ -104,6 +97,27 @@ export default function () {
     setUploading(true);
 
     try {
+      const result = await (
+        await fetch("https://api.cloudinary.com/v1_1/dgyebeipy/image/upload", {
+          method: "POST",
+          body: formData,
+        })
+      ).json();
+
+      if (!result.secure_url) throw new Error();
+      setImageUrl(result.secure_url);
+
+      const waitForImageUrl = (resolve) => {
+        while (true) {
+          if (imageUrl?.includes("https://")) {
+            resolve();
+            return;
+          }
+        }
+      };
+
+      await new Promise(waitForImageUrl);
+
       const response = await fetch("/api/addProduct", {
         method: "POST",
         headers: {
@@ -120,7 +134,9 @@ export default function () {
       });
 
       const { error } = await response.json();
-      if (error) throw new Error()
+      if (error) throw new Error();
+      setPopSuccess(true);
+      setTimeout(() => setPopSuccess(false), 8000);
       router.push("/products");
     } catch (error) {
       setPopError(true);
@@ -134,9 +150,15 @@ export default function () {
 
   return (
     <div className="p-4 text-white w-full">
-      {popError ? (
+      {popError || popSuccess ? (
         <div className="absolute bottom-0 -translate-y-16 w-full flex items-center justify-center">
-          <PopUp message={"Something went wrong. Could not add product"} />
+          <PopUp
+            message={
+              popSuccess
+                ? "Product added successfully"
+                : "Something went wrong. Could not add product"
+            }
+          />
         </div>
       ) : null}
 
