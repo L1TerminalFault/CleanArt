@@ -42,6 +42,11 @@ export default function () {
     setSubmitting(uploading);
   }, [uploading]);
 
+  useEffect(() => {
+    if (imageUrl?.includes("https"))
+      finalizeUpload()
+  }, [imageUrl])
+
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -61,6 +66,35 @@ export default function () {
     };
   };
 
+  const finalizeUpload = async () => {
+    try {
+      const response = await fetch("/api/addProduct", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          category,
+          title,
+          description,
+          time,
+          price,
+          image: imageUrl,
+        }),
+      });
+
+      const { error } = await response.json();
+      if (error) throw new Error();
+      setPopSuccess(true);
+      setTimeout(() => setPopSuccess(false), 8000);
+      router.push("/products");
+    } catch (error) {
+      setPopError(true);
+      setTimeout(() => setPopError(false), 8000);
+    } finally {
+      setUploading(false);
+    }
+  }
 
   const handleSubmit = async () => {
     let anyError = undefined;
@@ -110,45 +144,10 @@ export default function () {
         if (!result.secure_url) throw new Error();
         setImageUrl(result.secure_url);
       }
-
-      // await new Promise(resolve => setTimeout(resolve, 400))
-      await upload()
-      await new Promise(resolve => setTimeout(resolve, 9000))
-
-      if (!imageUrl) {
-        await upload()
-        if (!imageUrl) 
-          throw new Error()
-      }
-
-      const response = await fetch("/api/addProduct", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          category,
-          title,
-          description,
-          time,
-          price,
-          image: imageUrl,
-        }),
-      });
-
-      const { error } = await response.json();
-      if (error) throw new Error();
-      setPopSuccess(true);
-      setTimeout(() => setPopSuccess(false), 8000);
-      router.push("/products");
     } catch (error) {
       setPopError(true);
       setTimeout(() => setPopError(false), 8000);
-    } finally {
-      setUploading(false);
     }
-
-    setUploading(false);
   };
 
   return (
